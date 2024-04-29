@@ -1,9 +1,10 @@
 {
-  "name": "student-management-system",
+  "name": "rktech-0078-student-management-system",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
