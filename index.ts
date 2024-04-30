@@ -22,12 +22,14 @@ let answer = await inquirer.prompt(
         }
     ]
 );
+
+
 console.log(chalk.red.bold(`\n Hello! "${answer.student}", Welcome to our "Student-Management-System" \n`));
 console.log(chalk.red.bold(`Your Student ID is: ${randomNumber} \n`));
 
 
-        let course1 = await inquirer.prompt(
-            [
+let course1 = await inquirer.prompt(
+    [
         {
             name: "course2",
             type: "list",
@@ -72,6 +74,7 @@ let paymentType = await inquirer.prompt(
     ]
 );
 
+
 console.log(`\n You Select "${paymentType.payment}" as a "Payment Method" \n `);
 
 const courseFees = courseFee[course1.course2]
@@ -79,34 +82,34 @@ const courseFees = courseFee[course1.course2]
 const paymentAmount = parseFloat(paymentType.amount)
 
 
-if (courseFees === paymentAmount){
+if (courseFees === paymentAmount) {
     console.log(`\nCongratulations, You are Succesfully Enrolled in ${course1.course2} \n`);
 
     let ans = await inquirer.prompt(
         [
             {
-                name:"status",
-                type:"list",
-                message:chalk.bgBlack.whiteBright("What do you want to next: "),
-                choices:["View Status","Exit"]
+                name: "status",
+                type: "list",
+                message: chalk.bgBlack.whiteBright("What do you want to next: "),
+                choices: ["View Status", "Exit"]
             }
         ]
     );
-    if(ans.status === "View Status"){
+    if (ans.status === "View Status") {
         console.log(`\n***** STATUS ***** \n`);
         console.log(`Student Name: ${answer.student}`);
         console.log(`Student ID: ${randomNumber}`);
         console.log(`Selected Course: ${course1.course2}`);
         console.log(`Balance: ${myBalance += paymentAmount}`);
-    }else{
+    } else {
         console.log(`\n You Selecting "Exit", "GOOD-BYE" See You Later! \n`);
-        
-    }
- 
-    
 
-}else{
+    }
+
+
+
+} else {
     console.log("\n Invalid Attempt, You select wrong amount, 'Please Try Again'");
-    
+
 }
 
