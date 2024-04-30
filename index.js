@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+import chalk from "chalk";
 import inquirer from "inquirer";
 const randomNumber = Math.floor(10000 + Math.random() * 90000);
 let myBalance = 0;
@@ -6,7 +7,7 @@ let answer = await inquirer.prompt([
     {
         name: "student",
         type: "input",
-        message: "Enter student name here: ",
+        message: chalk.bgBlack.whiteBright("Enter student name here: "),
         validate: function (value) {
             if (value.trim() !== "") {
                 return true;
@@ -15,13 +16,13 @@ let answer = await inquirer.prompt([
         }
     }
 ]);
-console.log(`\n Hello! "${answer.student}", Welcome to our "Student-Management-System" \n`);
-console.log(`Your Student ID is: ${randomNumber} \n`);
+console.log(chalk.red.bold(`\n Hello! "${answer.student}", Welcome to our "Student-Management-System" \n`));
+console.log(chalk.red.bold(`Your Student ID is: ${randomNumber} \n`));
 let course1 = await inquirer.prompt([
     {
         name: "course2",
         type: "list",
-        message: "Select Your Desirable Course You Want to Enroll: ",
+        message: chalk.bgBlack.whiteBright("Select Your Desirable Course You Want to Enroll: "),
         choices: ['MS-OFFICE', 'HTML-5', 'CSS-3', 'JAVASCRIPT', 'TYPESCRIPT', 'NODE.JS', 'REACT.JS']
     }
 ]);
@@ -34,19 +35,19 @@ const courseFee = {
     "NODE.JS": 6000,
     "REACT.JS": 10000
 };
-console.log(`\n Course Fees: ${courseFee[course1.course2]}/- `);
+console.log(`\n Course Fees: ${courseFee[course1.course2]}/- \n`);
 console.log(`\n Balance: ${myBalance} \n`);
 let paymentType = await inquirer.prompt([
     {
         name: "payment",
         type: 'list',
-        message: "Select Your Payment Method: ",
+        message: chalk.bgBlack.whiteBright("\n Select Your Payment Method: \n"),
         choices: ['Bank Transfer', 'Easypaisa', 'JazzCash', 'COD']
     },
     {
         name: "amount",
         type: "input",
-        message: "How much money do you want to transfer: ",
+        message: chalk.bgBlack.whiteBright("\n How much money do you want to transfer: \n"),
         validate: function (value) {
             if (value.trim() !== "") {
                 return true;
@@ -59,12 +60,12 @@ console.log(`\n You Select "${paymentType.payment}" as a "Payment Method" \n `);
 const courseFees = courseFee[course1.course2];
 const paymentAmount = parseFloat(paymentType.amount);
 if (courseFees === paymentAmount) {
-    console.log(`\nCongratulations, You are Succesfully Enrolled in ${course1.course2}`);
+    console.log(`\nCongratulations, You are Succesfully Enrolled in ${course1.course2} \n`);
     let ans = await inquirer.prompt([
         {
             name: "status",
             type: "list",
-            message: "What do you want to next: ",
+            message: chalk.bgBlack.whiteBright("What do you want to next: "),
             choices: ["View Status", "Exit"]
         }
     ]);
